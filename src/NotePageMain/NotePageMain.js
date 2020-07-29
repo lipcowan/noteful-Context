@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import Note from "../Note/Note";
 import "./NotePageMain.css";
-
 import NoteContext from "../NoteContext";
 
 export default class NotePageMain extends Component {
