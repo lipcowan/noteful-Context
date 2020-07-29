@@ -5,7 +5,7 @@ import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
-import dummyStore from '../dummy-store';
+//import dummyStore from '../dummy-store';
 import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
 
@@ -14,10 +14,19 @@ class App extends Component {
         notes: [],
         folders: []
     };
-
+//implement api fetch here ... use saftey net? || {}
     componentDidMount() {
-        // fake date loading from API call
-        setTimeout(() => this.setState(dummyStore), 600);
+        const base_url = 'http://localhost:9090'
+        Promise.all([
+            fetch(`${base_url}/folders`), 
+            fetch(`${base_url}/notes`)
+        ]).then(([folderRes, noteRes]) => {
+            return Promise.all([folderRes.json(), noteRes.json()])
+        }).then(([folders, notes]) => {
+            this.setState({
+                folders,notes
+            })
+        }).catch((error) => console.error('ERROR:', error))
     }
 
     renderNavRoutes() {
