@@ -6,6 +6,7 @@ import NoteContext from "../NoteContext";
 
 export default class NotePageMain extends Component {
   static contextType = NoteContext;
+
   render() {
     console.log(this.context);
     let { notes } = this.context;

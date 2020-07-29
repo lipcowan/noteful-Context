@@ -10,6 +10,7 @@ import NoteContext from "../NoteContext";
 export default class Note extends Component {
   static contextType = NoteContext;
 
+  
   handleClickRemove = () => {
     const noteId = this.props.id;
     console.log(noteId);
