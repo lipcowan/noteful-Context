@@ -10,7 +10,6 @@ import NoteContext from "../NoteContext";
 export default class Note extends Component {
   static contextType = NoteContext;
 
-  
   handleClickRemove = () => {
     const noteId = this.props.id;
     console.log(noteId);
@@ -28,6 +27,7 @@ export default class Note extends Component {
       })
       .then(() => {
         this.context.deleteNote(noteId);
+        this.props.deleteNote(noteId);
       })
       .catch(error => {
         console.error({ error });
